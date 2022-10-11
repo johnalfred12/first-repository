@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Shop | Online Library</title>
+    <meta charset="UTF-8" />
+    <style>
+      body {
+        background-color: antiquewhite;
+        font-family: Arial, Helvetica, sans-serif;
+        text-align: center;
+      }
+
+      h1,
+      form,
+      table {
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        line-height: 140%;
+      }
+
+      h1 {
+        color: maroon;
+        font-weight: bold;
+      }
+
+      input[type="button"] {
+        font-weight: bold;
+        color: white;
+        border: none;
+        border-radius: 4px;
+      }
+
+      input[value="Add to cart"] {
+        background-color: darkorange;
+      }
+
+      input[value="Add to wishlist"] {
+        background-color: purple;
+      }
+
+      input[value="Checkout"] {
+        background-color: green;
+      }
+
+      input[type="button"]:hover {
+        background-color: gray;
+        transition-duration: 0.2s;
+      }
+
+      th {
+        background-color: maroon;
+        color: white;
+      }
+
+      .filteredtable tbody tr,
+      .tablefilter {
+        display: none;
+      }
+      #A-book.tablefilter:checked ~ table tbody tr.A-book,
+      #B-book.tablefilter:checked ~ table tbody tr.B-book,
+      #C-book.tablefilter:checked ~ table tbody tr.C-book,
+      #D-book.tablefilter:checked ~ table tbody tr.D-book,
+      #E-book.tablefilter:checked ~ table tbody tr.E-book,
+      #F-book.tablefilter:checked ~ table tbody tr.F-book,
+      #G-book.tablefilter:checked ~ table tbody tr.G-book,
+      #H-book.tablefilter:checked ~ table tbody tr.H-book,
+      #I-book.tablefilter:checked ~ table tbody tr.I-book,
+      #J-book.tablefilter:checked ~ table tbody tr.J-book,
+      #K-book.tablefilter:checked ~ table tbody tr.K-book,
+      #L-book.tablefilter:checked ~ table tbody tr.L-book,
+      #M-book.tablefilter:checked ~ table tbody tr.M-book,
+      #N-book.tablefilter:checked ~ table tbody tr.N-book,
+      #O-book.tablefilter:checked ~ table tbody tr.O-book,
+      #P-book.tablefilter:checked ~ table tbody tr.P-book,
+      #Q-book.tablefilter:checked ~ table tbody tr.Q-book,
+      #R-book.tablefilter:checked ~ table tbody tr.R-book,
+      #S-book.tablefilter:checked ~ table tbody tr.S-book,
+      #T-book.tablefilter:checked ~ table tbody tr.T-book,
+      #U-book.tablefilter:checked ~ table tbody tr.U-book,
+      #V-book.tablefilter:checked ~ table tbody tr.V-book,
+      #W-book.tablefilter:checked ~ table tbody tr.W-book,
+      #X-book.tablefilter:checked ~ table tbody tr.X-book,
+      #Y-book.tablefilter:checked ~ table tbody tr.Y-book,
+      #Z-book.tablefilter:checked ~ table tbody tr.Z-book {
+        display: table-row;
+      }
+
+      #A-author.tablefilter:checked ~ table tbody tr.A-author,
+      #B-author.tablefilter:checked ~ table tbody tr.B-author,
+      #C-author.tablefilter:checked ~ table tbody tr.C-author,
+      #D-author.tablefilter:checked ~ table tbody tr.D-author,
+      #E-author.tablefilter:checked ~ table tbody tr.E-author,
+      #F-author.tablefilter:checked ~ table tbody tr.F-author,
+      #G-author.tablefilter:checked ~ table tbody tr.G-author,
+      #H-author.tablefilter:checked ~ table tbody tr.H-author,
+      #I-author.tablefilter:checked ~ table tbody tr.I-author,
+      #J-author.tablefilter:checked ~ table tbody tr.J-author,
+      #K-author.tablefilter:checked ~ table tbody tr.K-author,
+      #L-author.tablefilter:checked ~ table tbody tr.L-author,
+      #M-author.tablefilter:checked ~ table tbody tr.M-author,
+      #N-author.tablefilter:checked ~ table tbody tr.N-author,
+      #O-author.tablefilter:checked ~ table tbody tr.O-author,
+      #P-author.tablefilter:checked ~ table tbody tr.P-author,
+      #Q-author.tablefilter:checked ~ table tbody tr.Q-author,
+      #R-author.tablefilter:checked ~ table tbody tr.R-author,
+      #S-author.tablefilter:checked ~ table tbody tr.S-author,
+      #T-author.tablefilter:checked ~ table tbody tr.T-author,
+      #U-author.tablefilter:checked ~ table tbody tr.U-author,
+      #V-author.tablefilter:checked ~ table tbody tr.V-author,
+      #W-author.tablefilter:checked ~ table tbody tr.W-author,
+      #X-author.tablefilter:checked ~ table tbody tr.X-author,
+      #Y-author.tablefilter:checked ~ table tbody tr.Y-author,
+      #Z-author.tablefilter:checked ~ table tbody tr.Z-author {
+        display: table-row;
+      }
+
+      .tablefilter + label {
+        cursor: pointer;
+        background-color: gray;
+        color: #fff;
+        padding: 3px;
+      }
+
+      .tablefilter:checked + label {
+        background-color: maroon;
+      }
+
+      #all.tablefilter:checked ~ table tbody tr {
+        display: table-row;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Online Library</h1>
+    <form id="search-form" action="#" method="#">
+      <label for="search">Search: </label>
+      <input
+        type="text"
+        name="search"
+        id="search"
+        onkeyup="searchBar()"
+        placeholder="Search on something ..."
+      />
+    </form>
+    <br />
+
+    <input type="checkbox" class="tablefilter" name="all" id="all" checked />
+    <label for="all">Show All</label>
+
+    <p>Book Title:</p>
+    <input type="checkbox" class="tablefilter" name="A-book" id="A-book" />
+    <label for="A-book">A</label>
+    <input type="checkbox" class="tablefilter" name="B-book" id="B-book" />
+    <label for="B-book">B</label>
+    <input type="checkbox" class="tablefilter" name="C-book" id="C-book" />
+    <label for="C-book">C</label>
+    <input type="checkbox" class="tablefilter" name="D-book" id="D-book" />
+    <label for="D-book">D</label>
+    <input type="checkbox" class="tablefilter" name="E-book" id="E-book" />
+    <label for="E-book">E</label>
+    <input type="checkbox" class="tablefilter" name="F-book" id="F-book" />
+    <label for="F-book">F</label>
+    <input type="checkbox" class="tablefilter" name="G-book" id="G-book" />
+    <label for="G-book">G</label>
+    <input type="checkbox" class="tablefilter" name="H-book" id="H-book" />
+    <label for="H-book">H</label>
+    <input type="checkbox" class="tablefilter" name="I-book" id="I-book" />
+    <label for="I-book">I</label>
+    <input type="checkbox" class="tablefilter" name="J-book" id="J-book" />
+    <label for="J-book">J</label>
+    <input type="checkbox" class="tablefilter" name="K-book" id="K-book" />
+    <label for="K-book">K</label>
+    <input type="checkbox" class="tablefilter" name="L-book" id="L-book" />
+    <label for="L-book">L</label>
+    <input type="checkbox" class="tablefilter" name="M-book" id="M-book" />
+    <label for="M-book">M</label>
+    <input type="checkbox" class="tablefilter" name="N-book" id="N-book" />
+    <label for="N-book">N</label>
+    <input type="checkbox" class="tablefilter" name="O-book" id="O-book" />
+    <label for="O-book">O</label>
+    <input type="checkbox" class="tablefilter" name="P-book" id="P-book" />
+    <label for="P-book">P</label>
+    <input type="checkbox" class="tablefilter" name="Q-book" id="Q-book" />
+    <label for="Q-book">Q</label>
+    <input type="checkbox" class="tablefilter" name="R-book" id="R-book" />
+    <label for="R-book">R</label>
+    <input type="checkbox" class="tablefilter" name="S-book" id="S-book" />
+    <label for="S-book">S</label>
+    <input type="checkbox" class="tablefilter" name="T-book" id="T-book" />
+    <label for="T-book">T</label>
+    <input type="checkbox" class="tablefilter" name="U-book" id="U-book" />
+    <label for="U-book">U</label>
+    <input type="checkbox" class="tablefilter" name="V-book" id="V-book" />
+    <label for="V-book">V</label>
+    <input type="checkbox" class="tablefilter" name="W-book" id="W-book" />
+    <label for="W-book">W</label>
+    <input type="checkbox" class="tablefilter" name="X-book" id="X-book" />
+    <label for="X-book">X</label>
+    <input type="checkbox" class="tablefilter" name="Y-book" id="Y-book" />
+    <label for="Y-book">Y</label>
+    <input type="checkbox" class="tablefilter" name="Z-book" id="Z-book" />
+    <label for="Z-book">Z</label>
+    <input
+      type="checkbox"
+      class="tablefilter"
+      name="others-book"
+      id="others-book"
+    />
+    <label for="others-book">others</label>
+    <br />
+
+    <p>Author:</p>
+    <input type="checkbox" class="tablefilter" name="A-author" id="A-author" />
+    <label for="A-author">A</label>
+    <input type="checkbox" class="tablefilter" name="B-author" id="B-author" />
+    <label for="B-author">B</label>
+    <input type="checkbox" class="tablefilter" name="C-author" id="C-author" />
+    <label for="C-author">C</label>
+    <input type="checkbox" class="tablefilter" name="D-author" id="D-author" />
+    <label for="D-author">D</label>
+    <input type="checkbox" class="tablefilter" name="E-author" id="E-author" />
+    <label for="E-author">E</label>
+    <input type="checkbox" class="tablefilter" name="F-author" id="F-author" />
+    <label for="F-author">F</label>
+    <input type="checkbox" class="tablefilter" name="G-author" id="G-author" />
+    <label for="G-author">G</label>
+    <input type="checkbox" class="tablefilter" name="H-author" id="H-author" />
+    <label for="H-author">H</label>
+    <input type="checkbox" class="tablefilter" name="I-author" id="I-author" />
+    <label for="I-author">I</label>
+    <input type="checkbox" class="tablefilter" name="J-author" id="J-author" />
+    <label for="J-author">J</label>
+    <input type="checkbox" class="tablefilter" name="K-author" id="K-author" />
+    <label for="K-author">K</label>
+    <input type="checkbox" class="tablefilter" name="L-author" id="L-author" />
+    <label for="L-author">L</label>
+    <input type="checkbox" class="tablefilter" name="M-author" id="M-author" />
+    <label for="M-author">M</label>
+    <input type="checkbox" class="tablefilter" name="N-author" id="N-author" />
+    <label for="N-author">N</label>
+    <input type="checkbox" class="tablefilter" name="O-author" id="O-author" />
+    <label for="O-author">O</label>
+    <input type="checkbox" class="tablefilter" name="P-author" id="P-author" />
+    <label for="P-author">P</label>
+    <input type="checkbox" class="tablefilter" name="Q-author" id="Q-author" />
+    <label for="Q-author">Q</label>
+    <input type="checkbox" class="tablefilter" name="R-author" id="R-author" />
+    <label for="R-author">R</label>
+    <input type="checkbox" class="tablefilter" name="S-author" id="S-author" />
+    <label for="S-author">S</label>
+    <input type="checkbox" class="tablefilter" name="T-author" id="T-author" />
+    <label for="T-author">T</label>
+    <input type="checkbox" class="tablefilter" name="U-author" id="U-author" />
+    <label for="U-author">U</label>
+    <input type="checkbox" class="tablefilter" name="V-author" id="V-author" />
+    <label for="V-author">V</label>
+    <input type="checkbox" class="tablefilter" name="W-author" id="W-author" />
+    <label for="W-author">W</label>
+    <input type="checkbox" class="tablefilter" name="X-author" id="X-author" />
+    <label for="X-author">X</label>
+    <input type="checkbox" class="tablefilter" name="Y-author" id="Y-author" />
+    <label for="Y-author">Y</label>
+    <input type="checkbox" class="tablefilter" name="Z-author" id="Z-author" />
+    <label for="Z-author">Z</label>
+    <input
+      type="checkbox"
+      class="tablefilter"
+      name="others-author"
+      id="others-author"
+    />
+    <label for="others-author">others</label>
+    <br /><br />
+
+    <table border id="library-table" class="filteredtable">
+      <thead>
+        <tr>
+          <th>Book Title</th>
+          <th>Author</th>
+          <th>Year Published</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="T-book J-author">
+          <td>The Fellowship of the Ring (The Lord of the Rings, #1)</td>
+          <td>J. R. R. Tolkien</td>
+          <td>1954</td>
+          <td>
+            <input type="button" value="Add to cart" />
+            <input type="button" value="Add to wishlist" />
+            <input
+              type="button"
+              onclick="location.href='./Alfonso_B27Exercise2B.html';"
+              value="Checkout"
+            />
+          </td>
+        </tr>
+        <tr class="T-book J-author">
+          <td>The Two Towers (The Lord of The Rings, #2)</td>
+          <td>J. R. R. Tolkien</td>
+          <td>1954</td>
+          <td>
+            <input type="button" value="Add to cart" />
+            <input type="button" value="Add to wishlist" />
+            <input
+              type="button"
+              onclick="location.href='./Alfonso_B27Exercise2B.html';"
+              value="Checkout"
+            />
+          </td>
+        </tr>
+        <tr class="T-book J-author">
+          <td>The Return of the King (The Lord of The Rings, #3)</td>
+          <td>J. R. R. Tolkien</td>
+          <td>1955</td>
+          <td>
+            <input type="button" value="Add to cart" />
+            <input type="button" value="Add to wishlist" />
+            <input
+              type="button"
+              onclick="location.href='./Alfonso_B27Exercise2B.html';"
+              value="Checkout"
+            />
+          </td>
+        </tr>
+        <tr class="A-book G-author">
+          <td>A Game of Thrones (A Song of Ice and Fire, #1)</td>
+          <td>George R. R. Martin</td>
+          <td>1996</td>
+          <td>
+            <input type="button" value="Add to cart" />
+            <input type="button" value="Add to wishlist" />
+            <input
+              type="button"
+              onclick="location.href='./Alfonso_B27Exercise2B.html';"
+              value="Checkout"
+            />
+          </td>
+        </tr>
+        <tr class="A-book G-author">
+          <td>A Clash of Kings (A Song of Ice and Fire, #2)</td>
+          <td>George R. R. Martin</td>
+          <td>1998</td>
+          <td>
+            <input type="button" value="Add to cart" />
+            <input type="button" value="Add to wishlist" />
+            <input
+              type="button"
+              onclick="location.href='./Alfonso_B27Exercise2B.html';"
+              value="Checkout"
+            />
+          </td>
+        </tr>
+        <tr class="A-book G-author">
+          <td>A Storm of Swords (A Song of Ice and Fire, #3)</td>
+          <td>George R. R. Martin</td>
+          <td>2000</td>
+          <td>
+            <input type="button" value="Add to cart" />
+            <input type="button" value="Add to wishlist" />
+            <input
+              type="button"
+              onclick="location.href='./Alfonso_B27Exercise2B.html';"
+              value="Checkout"
+            />
+          </td>
+        </tr>
+        <tr class="A-book G-author">
+          <td>A Feast of Crows (A Song of Ice and Fire, #4)</td>
+          <td>George R. R. Martin</td>
+          <td>2005</td>
+          <td>
+            <input type="button" value="Add to cart" />
+            <input type="button" value="Add to wishlist" />
+            <input
+              type="button"
+              onclick="location.href='./Alfonso_B27Exercise2B.html';"
+              value="Checkout"
+            />
+          </td>
+        </tr>
+        <tr class="A-book G-author">
+          <td>A Dance with Dragons (A Song of Ice and Fire, #5)</td>
+          <td>George R. R. Martin</td>
+          <td>2011</td>
+          <td>
+            <input type="button" value="Add to cart" />
+            <input type="button" value="Add to wishlist" />
+            <input
+              type="button"
+              onclick="location.href='./Alfonso_B27Exercise2B.html';"
+              value="Checkout"
+            />
+          </td>
+        </tr>
+        <tr class="F-book G-author">
+          <td>Fire & Blood</td>
+          <td>George R. R. Martin</td>
+          <td>2018</td>
+          <td>
+            <input type="button" value="Add to cart" />
+            <input type="button" value="Add to wishlist" />
+            <input
+              type="button"
+              onclick="location.href='./Alfonso_B27Exercise2B.html';"
+              value="Checkout"
+            />
+          </td>
+        </tr>
+        <tr class="R-book E-author">
+          <td>Ready Player One</td>
+          <td>Ernest Cline</td>
+          <td>2011</td>
+          <td>
+            <input type="button" value="Add to cart" />
+            <input type="button" value="Add to wishlist" />
+            <input
+              type="button"
+              onclick="location.href='./Alfonso_B27Exercise2B.html';"
+              value="Checkout"
+            />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <script>
+      function searchBar() {
+        var dataIn, filter, table, tr, i;
+        var td1, td2, td3;
+        var txtValue1, txtValue2, txtValue3;
+        dataIn = document.getElementById("search");
+        filter = dataIn.value.toUpperCase();
+        table = document.getElementById("library-table");
+        tr = table.getElementsByTagName("tr");
+
+        for (i = 0; i < tr.length; i++) {
+          td1 = tr[i].getElementsByTagName("td")[0];
+          td2 = tr[i].getElementsByTagName("td")[1];
+          td3 = tr[i].getElementsByTagName("td")[2];
+          if (td1 || td2 || td3) {
+            txtValue1 = td1.textContent || td1.innerText;
+            txtValue2 = td2.textContent || td2.innerText;
+            txtValue3 = td3.textContent || td3.innerText;
+            if (
+              txtValue1.toUpperCase().indexOf(filter) > -1 ||
+              txtValue2.toUpperCase().indexOf(filter) > -1 ||
+              txtValue3.toUpperCase().indexOf(filter) > -1
+            ) {
+              tr[i].style.display = "";
+            } else {
+              tr[i].style.display = "none";
+            }
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

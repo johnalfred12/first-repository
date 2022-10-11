@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Checkout | Online Library</title>
+    <meta charset="UTF=8" />
+    <style>
+      body {
+        background-color: antiquewhite;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      h1,
+      h2 {
+        text-align: center;
+      }
+      .form-container {
+        display: grid;
+      }
+      form {
+        margin: auto;
+        border-style: double;
+        padding: 1% 2% 2%;
+        line-height: 130%;
+      }
+      .checkout-container {
+        display: grid;
+        padding-bottom: 2%;
+      }
+      .checkout-container input {
+        margin: auto;
+        font-weight: bold;
+        border: none;
+        color: white;
+        padding: 2% 3% 2% 3%;
+      }
+
+      #confirm-btn {
+        background-color: green;
+      }
+      #confirm-btn:hover {
+        background-color: gray;
+        transition-duration: 0.2s;
+      }
+
+      #cancel-btn {
+        background-color: maroon;
+      }
+
+      #cancel-btn:hover {
+        background-color: gray;
+        transition-duration: 0.2s;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Checkout</h1>
+    <div class="form-container">
+      <form action="#" method="#">
+        <h2>Personal Information</h2>
+        <label for="email">Email address: </label><br />
+        <input
+          type="email"
+          name="email"
+          id="email"
+          placeholder="Enter email address here"
+          size="58"
+          required
+        /><br />
+
+        <p>
+          Title:
+          <input type="radio" name="title" id="mr" value="mr" />
+          <label for="mr">Mr.</label>
+          <input type="radio" name="title" id="mrs" value="mrs" />
+          <label for="mrs">Mrs.</label>
+        </p>
+
+        <label for="first-name">First name: </label><br />
+        <input
+          type="text"
+          name="first-name"
+          id="first-name"
+          placeholder="Enter you first name here"
+          size="58"
+          required
+        />
+        <br />
+
+        <label for="last-name">Last name: </label><br />
+        <input
+          type="text"
+          name="last-name"
+          id="last-name"
+          placeholder="Enter your last name here"
+          size="58"
+          required
+        />
+        <br />
+
+        <label for="birthdate">Birthdate: </label>
+        <input type="date" name="date" id="date" />
+        <br />
+
+        <h2>Delivery Address</h2>
+        <label for="province/state">Province/State: </label><br />
+        <input
+          type="text"
+          name="province/state"
+          id="province/state"
+          placeholder="Enter province/state here"
+          size="58"
+          required
+        />
+        <br />
+
+        <label for="city/municipality">City/Municipality: </label><br />
+        <input
+          type="text"
+          name="city/municipality"
+          id="city/municipality"
+          placeholder="Enter city/municipality here"
+          size="58"
+          required
+        />
+        <br />
+
+        <label for="address">Address: </label><br />
+        <input
+          type="text"
+          name="address"
+          id="address"
+          placeholder="Enter your address"
+          size="58"
+          required
+        />
+        <br />
+
+        <label for="zip/postalCode">Zip/Postal Code: </label><br />
+        <input
+          type="text"
+          name="zip/postalCode"
+          id="zip/postalCode"
+          placeholder="Enter your zip code here"
+          size="58"
+          required
+        />
+        <br />
+
+        <label for="mobilePhone">Mobile phone: </label><br />
+        <input
+          type="text"
+          name="mobilePhone"
+          id="mobilePhone"
+          placeholder="Enter your mobile phone here"
+          size="58"
+          required
+        />
+        <br />
+
+        <h2>Payment (Debit/Credit Card)</h2>
+        <label for="first-name">First name: </label><br />
+        <input
+          type="text"
+          name="first-name"
+          id="first-name"
+          placeholder="Enter you first name here"
+          size="58"
+          required
+        />
+        <br />
+
+        <label for="last-name">Last name: </label><br />
+        <input
+          type="text"
+          name="last-name"
+          id="last-name"
+          placeholder="Enter your last name here"
+          size="58"
+          required
+        />
+        <br />
+
+        <label for="card-number">Card number: </label><br />
+        <input
+          type="text"
+          name="card-number"
+          id="card-number"
+          placeholder="Enter you card number here"
+          size="58"
+          required
+        />
+        <br />
+
+        <label for="expiry-date">Expiry date: </label><br />
+        <input
+          type="text"
+          name="expiry-date"
+          id="expiry-date"
+          placeholder="Enter the expiry date"
+          size="58"
+          required
+        />
+        <br />
+
+        <label for="cvv">CVV: </label><br />
+        <input
+          type="text"
+          name="cvv"
+          id="cvv"
+          placeholder="CVV"
+          size="58"
+          required
+        />
+        <br /><br />
+        <div class="checkout-container">
+          <input
+            type="submit"
+            name="confirm-btn"
+            id="confirm-btn"
+            value="Confirm"
+          />
+          <br />
+          <input
+            type="button"
+            name="cancel-btn"
+            id="cancel-btn"
+            value="Cancel"
+            onclick="location.href='./Alfonso_B27Exercise2A.html';"
+          />
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
